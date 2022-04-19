@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useSignInWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { sendPasswordResetEmail } from 'firebase/auth';
 
 
 
@@ -22,9 +23,19 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     const [signInWithGoogle, googleUser, googlLoading, gooogleError] = useSignInWithGoogle(auth);
-    
+
     const [signInWithGithub, gitUser, gitLoading, gitError] = useSignInWithGithub(auth);
    
+  
+      const resetPassword = async() =>{
+          const email=userInfo.email
+        console.log(email)
+     
+        await sendPasswordResetEmail();
+        alert('Sent email');
+      }
+
+      
 
     const [user, loading, error] = useAuthState(auth);
     const handleFormInput = (event) => {
@@ -35,7 +46,7 @@ const Login = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         signInWithEmailAndPassword(userInfo.email, userInfo.password)
-        signInWithGoogle()
+        
 
     }
     let navigate = useNavigate();
@@ -63,10 +74,7 @@ const Login = () => {
                         <label for="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your password</label>
                         <input onBlur={(event) => handleFormInput(event)} type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required="" />
                     </div>
-                    <div className="flex items-start">
-
-                        <a href="#" className="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500">Forget Password?</a>
-                    </div>
+                 
                     <button type="submit" className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login to your account</button>
                     {
                         LoginUser && <p className='text-green-500'>User login successfully</p>
@@ -76,6 +84,14 @@ const Login = () => {
                         }
                     <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                         Not registered? <Link to="/sign-up" className="text-blue-700 hover:underline dark:text-blue-500">Create account</Link>
+                        <div className='flex d-block mt-3'>
+                            <p>Forget Password?</p>
+                            <button 
+                            onClick={()=>resetPassword()}
+                            className='btn btn-link text-blue-600'>
+                                Forget Password
+                            </button>
+                        </div>
                         <div className='flex d-block w-full mt-5'>
                           
                                 <button 
