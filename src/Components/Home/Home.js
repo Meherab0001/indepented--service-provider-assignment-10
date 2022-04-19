@@ -33,7 +33,7 @@ const Home = () => {
             </div >
             <div className='p-5 mr-3 hover:text-yellow-300'>
              
-                    <Link to="services">See All...</Link>
+                    <Link to="/services">See All...</Link>
                
             </div>
         </div>
