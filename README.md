@@ -1,3 +1,19 @@
+# https://assignment-10-dce5b.web.app/
+
+# Detective Lawyer
+
+* Nabar
+* Banner
+* Private Route
+* Sign in with Google and Github
+* A lawyer provide service
+
+* This projects use framework
+* React 
+* React Firebase Hooks 
+* Firebase
+* Tailwind and Flowbite
+* React Router
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
