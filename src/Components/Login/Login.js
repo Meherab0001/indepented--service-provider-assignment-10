@@ -5,6 +5,7 @@ import auth from '../../firebase.init';
 
 
 const Login = () => {
+
 const [userInfo,setUserInfo]=useState(
    { email: '',
     password: '',}
@@ -15,6 +16,7 @@ const [userInfo,setUserInfo]=useState(
         LoginLoading,
         LoginError,
       ] = useSignInWithEmailAndPassword(auth);
+
       const handleFormInput = (event) => {
 
         userInfo[event.target.name] = event.target.value
