@@ -16,11 +16,11 @@ const Home = () => {
     return (
         <div className='container w-full mx-auto'>
             <Banner></Banner>
-            <div className='w-full mt-5 justify-center items-center flex '>
-                <Link className='ml-3 text-xl font-serif hover:text-amber-500 ' to='/family-law'>Family Law</Link>
-                <Link className='ml-3 text-xl font-serif  hover:text-amber-500 ' to='/bussiness-law'>Bussiness Law</Link>
-                <Link className='ml-3 text-xl font-serif  hover:text-amber-500 ' to='civil'>Civil Litigation</Link>
-            </div>
+         <div className='flex d-block mt-5 justify-center '>
+             <h3 className='p-2 hover:text-orange-600 text-xl font-semibold'>Family  Law</h3>
+             <h3 className='p-2 hover:text-orange-600 text-xl font-semibold'>Bussiness  Law</h3>
+             <h3 className='p-2 hover:text-orange-600 text-xl font-semibold'>Civil  Law</h3>
+         </div>
             <div className='grid grid-cols-4 d-block  w-full grid-cols-1 gap-10 mx-auto md:w-4/5 lg:grid-cols-3 xl:gap-32'>
                 {
                     data?.map(service => <Service

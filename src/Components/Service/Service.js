@@ -2,16 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Service = ({service,children}) => {
+    console.log(service)
  console.log(children)
     const {first_name,cost,id,img}=service || {}
     const {email,phone,about} =children || {};
+    console.log(about)
     return (
         <div className='mt-5 grid ml-3 gap-6 '>
 
             <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                <a href="#">
+              
                     <img className={img} alt="" />
-                </a>
+            
                 <div className="p-5">
                
                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Name:{first_name}.</p>

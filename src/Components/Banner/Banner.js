@@ -4,7 +4,7 @@ import img2 from "./images.jpg"
 import img3 from './images.png'
 const Banner = () => {
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto mt-5'>
 
             <div id="default-carousel" className="relative" data-carousel="static">
 

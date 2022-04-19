@@ -11,6 +11,7 @@ import ServiceInfo from './Components/ServiceInfo/ServiceInfo';
 import RequiredAuth from './RequireAuth/RequireAuth';
 import NotFound from './Components/NotFound/NotFound';
 import Blog from './Components/Blog/Blog';
+import About from './Components/About/About';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path='/sign-up' element={<SignUp></SignUp>}></Route>
         <Route path="/services" element={<Services></Services>}></Route>
         <Route path="/blog" element={<Blog></Blog>}></Route>
+        <Route path='/about' element={<About></About>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       
