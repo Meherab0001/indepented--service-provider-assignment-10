@@ -5,7 +5,7 @@ import Banner from '../Banner/Banner';
 import Service from '../Service/Service';
 
 const Home = () => {
-    const data = useServices('https://jsonplaceholder.typicode.com/users')
+    const data = useServices('https://raw.githubusercontent.com/Meherab0001/fakedata/main/fakedata.json')
     if (data.length > 4) {
         data.length = 4
 
