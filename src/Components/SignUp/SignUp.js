@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 const SignUp = () => {
     const [userInfo, setUserInfo] = useState({
         email: '',
@@ -22,7 +22,7 @@ const SignUp = () => {
         userInfo[event.target.name] = event.target.value
 
     }
-
+    const [user, loading, error] = useAuthState(auth);
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -34,8 +34,18 @@ const SignUp = () => {
             setConfirmError('')
             createUserWithEmailAndPassword(userInfo.email,userInfo.password)
         }
-        console.log(userInfo)
+      
     }
+    let navigate = useNavigate();
+    let location = useLocation();
+   
+  
+    let from = location.state?.from?.pathname || "/";
+    if(user){
+      
+        navigate(from);
+    }
+
     return (
         <div>
             <div className='container'>

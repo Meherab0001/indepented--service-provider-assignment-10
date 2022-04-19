@@ -8,7 +8,7 @@ import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
 import Services from './Components/Services/Services';
 import ServiceInfo from './Components/ServiceInfo/ServiceInfo';
-import RequiredAuth from './RequiredAuth/RequiredAuth';
+import RequiredAuth from './RequireAuth/RequireAuth';
 
 
 function App() {
