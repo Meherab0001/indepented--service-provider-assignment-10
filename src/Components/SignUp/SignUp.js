@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { sendEmailVerification } from 'firebase/auth';
 const SignUp = () => {
     const [userInfo, setUserInfo] = useState({
         email: '',
@@ -16,7 +17,9 @@ const SignUp = () => {
         createLoading,
 
         createError,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth ,{sendEmailVerification:true});
+   
+
     const handleFormInput = (event) => {
 
         userInfo[event.target.name] = event.target.value
@@ -45,11 +48,13 @@ const SignUp = () => {
 
 
     let from = location.state?.from?.pathname || "/";
-    if (user) {
+   if(sendEmailVerification){
+    if (user ) {
 
         navigate(from);
     }
-
+ 
+   }
     return (
         <div>
             <div className='container'>
@@ -74,7 +79,7 @@ const SignUp = () => {
                                 <input id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required="" />
                             </div>
                             <div className="ml-3 text-sm">
-                                <label for="remember" className="font-medium text-gray-900 dark:text-gray-300">Check-Out me</label>
+                                <label for="remember" className="font-medium text-gray-900 dark:text-gray-300">Accept tems and condition alls</label>
                             </div>
                         </div>
                         <button type="submit" className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register to your account</button>
