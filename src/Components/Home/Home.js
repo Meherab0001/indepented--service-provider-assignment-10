@@ -21,7 +21,7 @@ const Home = () => {
              <h3 className='p-2 hover:text-orange-600 text-xl font-semibold'>Bussiness  Law</h3>
              <h3 className='p-2 hover:text-orange-600 text-xl font-semibold'>Civil  Law</h3>
          </div>
-            <div className='grid grid-cols-4 d-block  w-full grid-cols-1 gap-10 mx-auto md:w-4/5 lg:grid-cols-3 xl:gap-32'>
+            <div className='grid grid-cols-3 sm:grid-cols-1 d-block  w-fullgap-10 mx-auto md:w-4/5 lg:grid-cols-3 xl:gap-32'>
                 {
                     data?.map(service => <Service
                         key={data.id}
